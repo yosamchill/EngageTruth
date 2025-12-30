@@ -1,6 +1,6 @@
 from fastapi import FastAPI #type: ignore
 from fastapi.middleware.cors import CORSMiddleware #type: ignore
-from instagram_analyzer import fetch_instagram_data, calculate_engagement
+from backend.instagram_analyzer import fetch_instagram_data, calculate_engagement
 from scoring import engagement_risk_points, follower_spike_points, risk_verdict
 import json
 import os
