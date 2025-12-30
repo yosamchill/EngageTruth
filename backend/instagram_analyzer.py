@@ -13,6 +13,12 @@ base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 data_path = os.path.join(base_dir, "data", "follower_history.json")
 
 def fetch_instagram_data(username):
+    try:
+        for c in post.get_comments():
+            comment_texts.append(c.text.lower())
+    except:
+        pass    
+
     loader = instaloader.Instaloader()
     profile = instaloader.Profile.from_username(loader.context, username)
 
