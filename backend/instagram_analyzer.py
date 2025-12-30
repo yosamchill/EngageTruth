@@ -1,6 +1,12 @@
 import json
 import os
-from scoring import engagement_risk_points, follower_spike_points, comment_repetition_points, risk_verdict
+from backend.scoring import (  # type: ignore
+    engagement_risk_points,
+    follower_spike_points,
+    comment_repetition_points,
+    risk_verdict
+)
+
 import instaloader # type: ignore
 
 base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
