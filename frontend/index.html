@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>engagetruth</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="hero">
+        <h1>EngageTruth</h1>
+        <p>Behavioral Analysis to detect Instagram Engagement Manipulation</p>
+    </div>
+
+    <div class="search-card">
+        <input
+            type="text"
+            id="username"
+            placeholder="instagram username (e.g. virat.kohli)"
+        >
+        <button onclick="analyze()">analyze</button>
+    </div>
+
+    <div id="loading" class="loading hidden">
+        <span class="dot"></span>
+        analyzing profile
+    </div>
+
+    <div id="error" class="error hidden"></div>
+
+    <div id="result" class="report hidden">
+        <h2>analysis report</h2>
+
+        <div class="metrics">
+            <div class="metric">
+                <span class="label tooltip"
+                      data-tip="total number of followers on the profile">
+                    followers
+                </span>
+                <span id="followers" class="value"></span>
+            </div>
+
+            <div class="metric">
+                <span class="label tooltip"
+                      data-tip="average interaction rate per post">
+                    engagement
+                </span>
+                <span id="engagement" class="value"></span>
+            </div>
+
+            <div class="metric">
+                <span class="label tooltip"
+                      data-tip="combined manipulation risk score">
+                    risk score
+                </span>
+                <span id="score" class="value"></span>
+            </div>
+        </div>
+
+        <div id="verdict-badge" class="verdict-pill">
+            <span id="verdict"></span>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
