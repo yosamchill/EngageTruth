@@ -58,3 +58,9 @@ def analyze(username: str):
         "risk_score": total_score,
         "verdict": verdict
     }
+@app.get("/")
+def root():
+    return {
+        "message": "engagetruth api is live",
+        "usage": "/analyze/{instagram_username}"
+    }
