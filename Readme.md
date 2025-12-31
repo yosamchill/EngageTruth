@@ -244,3 +244,19 @@
 
 ##### The name EngageTruth represents the idea of revealing the truth behind engagement numbers by analyzing how users actually interact with content, rather than trusting visible popularity metrics.
 
+
+
+
+
+### **15. ⚠️ Note:**
+
+
+
+##### Due to Instagram's anti-scraping restrictions, live data fetching is disabled in the deployed version.
+
+##### The system uses simulated public engagement patterns to demonstrate the behavioral analysis logic.
+
+##### The scoring, UI, and risk evaluation pipeline remain identical to real-world usage.
+
+
+
