@@ -1,34 +1,28 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from backend.instagram_analyzer import fetch_instagram_data, calculate_engagement
 
 app = FastAPI()
 
-@app.get("/")
-def root():
-    return {
-        "message": "engagetruth api is live",
-        "usage": "/analyze/{instagram_username}"
-    }
+# serve static files (css, js)
+app.mount("/static", StaticFiles(directory="frontend"), name="static")
 
+# homepage (UI)
+@app.get("/")
+def serve_ui():
+    return FileResponse("frontend/index.html")
+
+# api endpoint
 @app.get("/analyze/{username}")
 def analyze(username: str):
-    try:
-        data = fetch_instagram_data(username)
-        if not data:
-            raise Exception("data fetch failed")
+    data = fetch_instagram_data(username)
+    engagement = calculate_engagement(data)
 
-        engagement = calculate_engagement(data)
-
-        return {
-            "username": username,
-            "followers": data["followers"],
-            "engagement": engagement,
-            "risk_score": data.get("risk_score", 0),
-            "verdict": data.get("verdict", "unknown")
-        }
-
-    except Exception as e:
-        raise HTTPException(
-            status_code=500,
-            detail=f"analysis failed: {str(e)}"
-        )
+    return {
+        "username": username,
+        "followers": data["followers"],
+        "engagement": engagement,
+        "risk_score": data.get("risk_score", 0),
+        "verdict": data.get("verdict", "likely genuine")
+    }

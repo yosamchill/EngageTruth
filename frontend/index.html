@@ -4,67 +4,33 @@
     <meta charset="utf-8">
     <title>engagetruth</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
 
 <div class="wrapper">
-    <div class="hero">
-        <h1>EngageTruth</h1>
-        <p>Behavioral Analysis to detect Instagram Engagement Manipulation</p>
+    <h1>engagetruth</h1>
+    <p class="subtitle">behavior-based instagram engagement analysis</p>
+
+    <div class="orb-container">
+        <div class="orb"></div>
     </div>
 
     <div class="search-card">
-        <input
-            type="text"
-            id="username"
-            placeholder="instagram username (e.g. virat.kohli)"
-        >
+        <input id="username" placeholder="instagram username">
         <button onclick="analyze()">analyze</button>
     </div>
 
-    <div id="loading" class="loading hidden">
-        <span class="dot"></span>
-        analyzing profile
-    </div>
-
-    <div id="error" class="error hidden"></div>
+    <div id="loading" class="hidden">analyzing...</div>
 
     <div id="result" class="report hidden">
-        <h2>analysis report</h2>
-
-        <div class="metrics">
-            <div class="metric">
-                <span class="label tooltip"
-                      data-tip="total number of followers on the profile">
-                    followers
-                </span>
-                <span id="followers" class="value"></span>
-            </div>
-
-            <div class="metric">
-                <span class="label tooltip"
-                      data-tip="average interaction rate per post">
-                    engagement
-                </span>
-                <span id="engagement" class="value"></span>
-            </div>
-
-            <div class="metric">
-                <span class="label tooltip"
-                      data-tip="combined manipulation risk score">
-                    risk score
-                </span>
-                <span id="score" class="value"></span>
-            </div>
-        </div>
-
-        <div id="verdict-badge" class="verdict-pill">
-            <span id="verdict"></span>
-        </div>
+        <p><b>followers:</b> <span id="followers"></span></p>
+        <p><b>engagement:</b> <span id="engagement"></span>%</p>
+        <p><b>risk score:</b> <span id="score"></span></p>
+        <p class="verdict" id="verdict"></p>
     </div>
 </div>
 
-<script src="script.js"></script>
+<script src="/static/script.js"></script>
 </body>
 </html>
